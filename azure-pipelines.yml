@@ -17,7 +17,7 @@ steps:
   displayName: Restore
   inputs:
     command: restore
-    projects: '$(Parameters.RestoreBuildProjects)'
+    projects: '**/*.csproj'
 - task: SonarCloudPrepare@1
   displayName: 'Prepare Analysis Configuration'
   inputs:
