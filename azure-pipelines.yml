@@ -13,12 +13,28 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: SonarCloudPrepare@1
+  displayName: 'Prepare Analysis Configuration'
+  inputs:
+    SonarCloud: 'Sonar Cloud Connection'
+    organization: 'sachinkalia'
+    scannerMode: 'MSBuild'
+    projectKey: 'cosmosdbapp'
+    projectName: 'cosmosdbapp'
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+  displayName: 'Run Code Analysis on SonarCloud'
+
+- task: SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Result on SonarCloud'
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: DotNetCoreCLI@2
   displayName: Test
