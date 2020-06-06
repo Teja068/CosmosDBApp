@@ -18,14 +18,7 @@ steps:
   inputs:
     command: restore
     projects: '**/*.csproj'
-- task: SonarCloudPrepare@1
-  displayName: 'Prepare Analysis Configuration'
-  inputs:
-    SonarCloud: 'Sonar Cloud Connection'
-    organization: 'sachinkalia'
-    scannerMode: 'MSBuild'
-    projectKey: 'cosmosdbapp'
-    projectName: 'cosmosdbapp'
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -47,15 +40,6 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
     zipAfterPublish: True
-
-- task: SonarCloudAnalyze@1
-  displayName: 'Run Code Analysis on SonarCloud'
-
-- task: SonarCloudPublish@1
-  displayName: 'Publish Quality Gate Result on SonarCloud'
-  inputs:
-    pollingTimeoutSec: '300'
-
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact to drop'
