@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '9d76dd32-19d6-4f07-9af3-b997e59dfc97'
   imageRepository: 'cosmosdbapp'
   containerRegistry: 'azuretalkacr.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/CosmosDb_Demo_Crud/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Agent VM image name
