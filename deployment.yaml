@@ -26,11 +26,10 @@ metadata:
   labels:
     app: cosmos
 spec:
-  externalTrafficPolicy: Local
   selector:
     app: cosmos
   ports:
   - protocol: TCP
     port: 80    
     targetPort: 8080
-  type: LoadBalancer
+  type: ClusterIP
