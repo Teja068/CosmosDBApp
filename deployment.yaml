@@ -5,15 +5,15 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: cosmos
   replicas: 2 # deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: nginx
+        app: cosmos
     spec:
       containers:
-      - name: nginx
+      - name: cosmos
         image: gcr.io/strategic-ivy-310114/cosmosimage:296
         ports:
         - containerPort: 80
@@ -21,16 +21,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: gke-service
   namespace: default
   labels:
-    app: nginx
+    app: cosmos
 spec:
   externalTrafficPolicy: Local
   selector:
-    app: nginx
+    app: cosmos
   ports:
   - protocol: TCP
     port: 80    
-    targetPort: 80
-  type: LoadBalancer
+    targetPort: 8080
+  type: ClusterIP
