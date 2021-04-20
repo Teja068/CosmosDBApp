@@ -3,8 +3,9 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+#Changed master to master1 just to ignore auto run after each commit
 trigger:
-- master
+- master1
 
 pool:
   vmImage: 'ubuntu-latest'
