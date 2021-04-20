@@ -26,7 +26,6 @@ metadata:
   labels:
     app: cosmos
 spec:
-  externalTrafficPolicy: Local
   selector:
     app: cosmos
   ports:
