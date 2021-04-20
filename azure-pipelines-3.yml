@@ -2,8 +2,9 @@
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
+#Changed master to master1 just to ignore auto run after each commit
 trigger:
-- master
+- master1
 
 resources:
 - repo: self
