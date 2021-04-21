@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: cosmos
-        image: gcr.io/strategic-ivy-310114/cosmosimage:296
+        image: gcr.io/strategic-ivy-310114/cosmosimage:296  # Change the code for hello word image.
         ports:
         - containerPort: 80
 ---
@@ -26,10 +26,20 @@ metadata:
   labels:
     app: cosmos
 spec:
+  externalTrafficPolicy: Local
   selector:
     app: cosmos
   ports:
   - protocol: TCP
     port: 80    
     targetPort: 8080
-  type: ClusterIP
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: basic-ingress
+spec:
+  backend:
+    serviceName: gke-service
+    servicePort: 8080
